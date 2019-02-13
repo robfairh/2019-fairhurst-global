@@ -1,0 +1,81 @@
+\documentclass{anstrans}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Implementation of Demand Driven Deployment Capabilities in \Cyclus for Transition Scenarios}
+\author{Roberto E. Fairhurst$^a$, Gwendolyn J. Chee$^a$, Jin Whan Bae, Robert R. Flanagan$^b$, Kathryn D. Huff$^a$}
+
+\institute{
+$^a$University of Illinois at Urbana-Champaign, Dept. of Nuclear, Plasma, and Radiological Engineering\\
+$^b$University of South Carolina, Nuclear Engineering Program\\
+ref3@illinois.edu
+}
+
+%%%% packages and definitions (optional)
+\usepackage{graphicx} % allows inclusion of graphics
+\usepackage{booktabs} % nice rules (thick lines) for tables
+\usepackage{microtype} % improves typography for PDF
+\usepackage{xspace}
+\usepackage{tabularx}
+\usepackage{floatrow}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage[acronym,toc]{glossaries}
+\include{acros}
+
+\makeglossaries
+\newcommand{\SN}{S$_N$}
+\renewcommand{\vec}[1]{\bm{#1}} %vector is bold italic
+\newcommand{\vd}{\bm{\cdot}} % slightly bold vector dot
+\newcommand{\grad}{\vec{\nabla}} % gradient
+\newcommand{\ud}{\mathop{}\!\mathrm{d}} % upright derivative symbol
+\newcommand{\Cyclus}{\textsc{Cyclus}\xspace}%
+\newcommand{\Cycamore}{\textsc{Cycamore}\xspace}%
+\newcolumntype{c}{>{\hsize=.56\hsize}X}
+\newcolumntype{b}{>{\hsize=.7\hsize}X}
+\newcolumntype{s}{>{\hsize=.74\hsize}X}
+\newcolumntype{f}{>{\hsize=.1\hsize}X}
+\newcolumntype{a}{>{\hsize=.45\hsize}X}
+\usepackage{titlesec}
+\titleformat*{\subsection}{\normalfont}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Abstract}
+
+Nuclear fuel cycle simulators require some previous knowledge on part of the users about the fuel cycle they want to study.
+Sometimes the user has to carry out some calculations by hand in order to know how many facilities are necessary to deploy
+to adequately represent such cycle. Consequently, it is usually required to run several times the simulator until the cycle
+portrays correctly reality. However, this sort of iteration can be simplified by having a simulator capable of deploying the right
+amount of facilities automatically. A new Demand Driven Deployment Capability (\texttt{d3ploy} \cite{chee_demonstration_2019})
+is under development to make the agent-based nuclear fuel cycle simulation framework \Cyclus \cite{huff_fundamental_2016} have
+those functionalities. The objective of the present work was to carry out several simulations making use of \texttt{d3ploy}.
+The results showed that for some cases this capability was very helpful. Additionally, the results brought to light the need of
+adding new features to \texttt{d3ploy} for more complex fuel cycles.
+\\
+As part of the project NEUP-FY16-10512, this work simulated several scenarios using \Cyclus. The Idaho National Laboratory
+Nuclear Fuel Cycle Evaluation and Screening Report \cite{wigeland_nuclear_2014} established such scenarios. The simulations
+focused on the cases EG01, EG23, EG24, EG29, and EG30, see Table \ref{tab:1}. All the scenarios started at EG01, representing
+the current U.S. fuel cycle, and transition to advanced fuel cycles. Following, the simulations made use of the aforementioned
+capability \texttt{d3ploy}. This capability counts with non-optimizing, deterministic-optimizing, and, currently under
+development, stochastic-optimizing algorithms. The results obtained using the different algorithms emphasized the ability of
+\texttt{d3ploy} to make easier the implementation of the transition scenarios.
+
+\floatsetup[table]{capposition=top}
+\begin{table}[!htb]
+    \begin{tabular}{|l|l|}
+        \hline
+        Fuel Cycle & Description                                                                                                                                 \\ \hline
+        EG01       & \begin{tabular}[c]{@{}l@{}}Once-through using enriched-U fuel in \\ thermal critical reactors.\end{tabular}                                 \\ \hline
+        EG23       & \begin{tabular}[c]{@{}l@{}}Continuous recycle of U/Pu with new\\ natural-U fuel in fast critical reactors.\end{tabular}                     \\ \hline
+        EG24       & \begin{tabular}[c]{@{}l@{}}Continuous recycle of U/TRU with new\\ natural-U fuel in fast critical reactors.\end{tabular}                    \\ \hline
+        EG29       & \begin{tabular}[c]{@{}l@{}}Continuous recycle of U/Pu with new\\ natural-U fuel in both fast and thermal\\ critical reactors.\end{tabular}  \\ \hline
+        EG30       & \begin{tabular}[c]{@{}l@{}}Continuous recycle of U/TRU with new\\ natural-U fuel in both fast and thermal\\ critical reactors.\end{tabular} \\ \hline
+    \end{tabular}
+    \caption{Cases identified in \cite{wigeland_nuclear_2014}.}\label{tab:1}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{ans}
+\bibliography{bibliography}
+\end{document}
+
