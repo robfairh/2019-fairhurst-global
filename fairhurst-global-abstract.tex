@@ -42,20 +42,23 @@ ref3@illinois.edu
 \section{Abstract}
 
 Nuclear fuel cycle simulators require users to have prior knowledge regarding the fuel cycle under study.
-Users must make calculations to find the amount of deployed facilities necessary to adequately represent such cycle.
-The user must then run the simulator several times until the implemented model reflects reality.
-However, this sort of iteration can be simplified by having a simulator capable of deploying the right
-amount of facilities automatically.
-\texttt{D3ploy} \cite{chee_demonstration_2019} -- a new Demand Driven Deployment Capability --
+Specifically, while most simulators automatically deploy reactor capacities to 
+meet power demand, none predict corresponding fuel cycle facility deployments necessary to support 
+those reactors. So, users must provide this information when defining the 
+simulation. In practice, this requires that the user run the simulator several times until the implemented model reflects reality.
+However, this sort of iteration can be simplified with a simulator capable of 
+deploying all types of interdependent facilities automatically.
+A new Demand Driven Deployment Capability --
+\texttt{D3ploy} \cite{chee_demonstration_2019} -- 
 is under development for the agent-based nuclear fuel cycle simulation framework \Cyclus \cite{huff_fundamental_2016}.
-The objective of the present work was to carry out various simulations to prove \texttt{d3ploy}'s usefulness at
-the moment of simulating complex cycles.
+The objective of the present work was to carry out various simulations to prove 
+\texttt{d3ploy}'s current capabilities for simulating complex cycles.
 
 The Idaho National Laboratory Nuclear Fuel Cycle Evaluation and Screening Report \cite{wigeland_nuclear_2014} established
 several fuel cycle scenarios.
 As part of the project NEUP-FY16-10512, the simulations focused on the cases EG01, EG23, EG24, EG29, and EG30 (Table \ref{tab:1}).
 All the scenarios started at EG01 -- representing the current U.S. fuel cycle -- and transitioned to advanced fuel cycles.
-The simulations utilized d3ploy's non-optimizing, deterministic-optimizing, and, currently under development,
+The simulations utilized \texttt{d3ploy}'s non-optimizing, deterministic-optimizing, and, currently under development,
 stochastic-optimizing algorithms. The results obtained using the different algorithms emphasized \texttt{d3ploy}'s ability
 to facilitate transition scenarios.
 
